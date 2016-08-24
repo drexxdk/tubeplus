@@ -4,7 +4,8 @@ var isLocalhost = document.location.hostname == "localhost";
 if (isRoot && !isLocalhost) {
     window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
 }
-//$(document).ready(function () {
+$(document).ready(function () {
+    alert($.fn.jquery);
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
 		back = $("#header > #headnav > ul > li:nth-child(3) > a");
@@ -17,7 +18,7 @@ if (isRoot && !isLocalhost) {
         leftTop.prepend($("#searchnav"));
         leftTop.append('<div id="toggle"><span></span></div>');
         leftTop.children("#toggle").prepend(back);
-        $("#main").on("click", "#toggle span", function () {
+        $("#main").live("click", "#toggle span", function () {
             $(this).toggleClass("open");
             right.toggleClass("open");
         });
@@ -42,7 +43,7 @@ if (isRoot && !isLocalhost) {
 			text = title.children("h1").text().trim();
         title.html("<div><h1>" + text + "</h1></div>");
         title.prepend('<span id="toggle" class="open"></span>');
-        $("#main").on("click", "#toggle", function () {
+        $("#main").live("click", "#toggle", function () {
             $(this).toggleClass("open");
             $("#left").toggleClass("hidden");
         });
@@ -94,4 +95,4 @@ if (isRoot && !isLocalhost) {
         }
     }
     $("body").attr('id', "ready");
-//});
+});
