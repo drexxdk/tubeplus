@@ -17,7 +17,7 @@ $(document).ready(function () {
         leftTop.prepend($("#searchnav"));
         leftTop.append('<div id="toggle"><span></span></div>');
         leftTop.children("#toggle").prepend(back);
-        $("#main").live("click", "#toggle span", function () {
+        $("#main").on("click", "#toggle span", function () {
             $(this).toggleClass("open");
             right.toggleClass("open");
         });
@@ -42,7 +42,7 @@ $(document).ready(function () {
 			text = title.children("h1").text().trim();
         title.html("<div><h1>" + text + "</h1></div>");
         title.prepend('<span id="toggle" class="open"></span>');
-        $("#main").live("click", "#toggle", function () {
+        $("#main").on("click", "#toggle", function () {
             $(this).toggleClass("open");
             $("#left").toggleClass("hidden");
         });
