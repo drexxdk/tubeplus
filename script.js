@@ -5,7 +5,6 @@ if (isRoot && !isLocalhost) {
     window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
 }
 $(document).ready(function () {
-    alert($.fn.jquery);
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
 		back = $("#header > #headnav > ul > li:nth-child(3) > a");
