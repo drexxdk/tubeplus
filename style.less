@@ -38,7 +38,6 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 }
 
 body {
-    position: relative;
     font-family: @font;
     font-size: 14px;
     background-color: @bg;
@@ -46,27 +45,15 @@ body {
 
 body:not(#ready) {
     overflow: hidden;
-}
 
-body:not(#ready)::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*background-color: @block;*/
-    z-index: 10;
-    margin-top: initial;
-    width: initial;
-    height: initial;
-    float: initial;
+    > * {
+        display:none!important;
+    }
 }
 
 .frelease,
 #list_more,
 body > img,
-/*#left > .episode_info,*/
 #header,
 #parts_header > ul > li.hand,
 #video,
@@ -297,6 +284,7 @@ body > .dhx_combo_list:nth-child(2) {
         > .episode_info {
             margin-top: initial;
             margin-bottom: initial;
+            border-bottom: 2px solid @border;
             padding: initial;
 
             > table {
@@ -380,14 +368,10 @@ body > .dhx_combo_list:nth-child(2) {
             }
         }
 
-        > .episode_info + #seasons {
-            border-top: 2px solid @border!important;
-        }
-
         > #seasons {
             margin: initial;
             padding: 10px 5px 5px 10px;
-            background-color: initial;
+            /*background-color: @block;*/
             border: initial;
             .border-radius(0);
             .flex-display();
@@ -684,16 +668,26 @@ body > .dhx_combo_list:nth-child(2) {
             padding: 6px;
         }
 
-        > #list_body > .date-container {
-            width: 100%;
+        > #list_body {
+            > .date-container {
+                width: 100%;
 
-            > p {
-                font-size: 16px;
-                font-weight: bold;
-                color: #909090;
-                padding-bottom: 2px;
-                margin: 5px 5px 10px 5px;
-                border-bottom: 1px dotted #909090;
+                > p {
+                    font-size: 16px;
+                    font-weight: bold;
+                    color: #909090;
+                    padding-bottom: 2px;
+                    margin: 5px 5px 10px 5px;
+                    border-bottom: 1px dotted #909090;
+                }
+            }
+
+            > .date-container + .date-container {
+                margin-top:10px;
+            }
+
+            > .date-container:last-of-type {
+                margin-bottom:25px;
             }
         }
 
@@ -929,7 +923,7 @@ body > .dhx_combo_list:nth-child(2) {
 
 #main > #left > #parts > #links_list > li:hover::before,
 #main > #left > #links_list > li > .link:hover::before,
-#main > #left > #list_body .list_item .right > .plot:hover::before,
+#main > #left > #list_body > .list_item .right > .plot:hover::before,
 #main > #right > #popular > .upcoming > li > a:hover::before {
     content: "";
     position: absolute;
