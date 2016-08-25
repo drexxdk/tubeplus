@@ -1,10 +1,10 @@
-﻿// vanilla javascript to increase speed
-var isRoot = location.pathname == "/";
-var isLocalhost = document.location.hostname == "localhost";
-if (isRoot && !isLocalhost) {
-    window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
-}
-$(document).ready(function () {
+﻿function runScript() {
+    // vanilla javascript to increase speed
+    var isRoot = location.pathname == "/";
+    var isLocalhost = document.location.hostname == "localhost";
+    if (isRoot && !isLocalhost) {
+        window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
+    }
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
 		back = $("#header > #headnav > ul > li:nth-child(3) > a");
@@ -94,4 +94,4 @@ $(document).ready(function () {
         }
     }
     $("body").attr('id', "ready");
-});
+}
