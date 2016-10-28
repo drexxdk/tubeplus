@@ -4,6 +4,16 @@ var isLocalhost = document.location.hostname == "localhost";
 if (isRoot && !isLocalhost) {
     window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
 }
+
+jQuery.cachedScript = function (url, options) {
+    options = $.extend(options || {}, {
+        dataType: 'script',
+        cache: true,
+        url: url
+    });
+    return jQuery.ajax(options);
+};
+
 $(document).ready(function () {
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
@@ -50,24 +60,23 @@ $(document).ready(function () {
         right.prepend(title);
         right.append('<div id="videoplayer"><div><iframe frameborder="0" scrolling="auto"></iframe></div></div>');
 
-        $.getScript("jquery-ui.min.js")
-            .done(function (script, textStatus) {
-                $("#videoplayer > div").resizable();
-            })
-            .fail(function (jqxhr, settings, exception) {
-                alert("error");
-            });
+
+        $.getScript('https://drexxdk.github.io/tubeplus/jquery-ui.min.js', function () {
+            var version = $.ui ? $.ui.version || "pre 1.6" : 'jQuery-UI not detected';
+            alert(version);
+            //$("#videoplayer > div").resizable();
+        });
         var videoplayer = $("#videoplayer > div > iframe");
         $("#seasons > a").each(function () {
             var $this = $(this),
-				text = $this.text();
+                text = $this.text();
             text = text.substring(text.indexOf(" ") + 1);
             $this.text(text);
         });
         $("#left > #links_list > li:first-child").removeClass("visited");
         $("#left > #links_list > li > .link > a").each(function () {
             var $this = $(this),
-				url = "\"" + $this.attr("onclick") + "\"";
+                url = "\"" + $this.attr("onclick") + "\"";
             if (url != undefined) {
                 url = url.substring(url.indexOf("'") + 1);
                 url = url.substring(0, url.indexOf("'"));
@@ -79,7 +88,7 @@ $(document).ready(function () {
         $("body").append('<div id="embed-data"></div>');
         $("#left > #links_list > li").click(function () {
             var $this = $(this),
-				url = $this.attr("data-url");
+                url = $this.attr("data-url");
             videoplayer.attr("src", url);
             $this.addClass("visited");
         });
@@ -89,9 +98,9 @@ $(document).ready(function () {
             params.children("span").remove();
             params.each(function () {
                 var $this = $(this),
-					text = $this.text().trim(),
-					date = text.substr(0, text.indexOf(' ')),
-					host = text.substring(text.lastIndexOf(' ') + 1);
+                    text = $this.text().trim(),
+                    date = text.substr(0, text.indexOf(' ')),
+                    host = text.substring(text.lastIndexOf(' ') + 1);
                 $this.parent().attr("data-id", host + date);
                 $this.html("<span>" + host + "</span><span>" + date + "</span");
             });
