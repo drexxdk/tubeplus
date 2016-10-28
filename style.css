@@ -30,7 +30,7 @@ input[type="file"] > input[type="button"]::-moz-focus-inner {
 body {
   font-family: sans-serif;
   font-size: 14px;
-  background-color: red;
+  background-color: #404040;
 }
 body:not(#ready) {
   overflow: hidden;
