@@ -5,15 +5,6 @@ if (isRoot && !isLocalhost) {
     window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
 }
 
-jQuery.cachedScript = function (url, options) {
-    options = $.extend(options || {}, {
-        dataType: 'script',
-        cache: true,
-        url: url
-    });
-    return jQuery.ajax(options);
-};
-
 $(document).ready(function () {
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
@@ -60,12 +51,6 @@ $(document).ready(function () {
         right.prepend(title);
         right.append('<div id="videoplayer"><div><iframe frameborder="0" scrolling="auto"></iframe></div></div>');
 
-
-        $.getScript('https://drexxdk.github.io/tubeplus/jquery-ui.min.js', function () {
-            var version = $.ui ? $.ui.version || "pre 1.6" : 'jQuery-UI not detected';
-            alert(version);
-            //$("#videoplayer > div").resizable();
-        });
         var videoplayer = $("#videoplayer > div > iframe");
         $("#seasons > a").each(function () {
             var $this = $(this),

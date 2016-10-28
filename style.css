@@ -326,7 +326,7 @@ body > .dhx_combo_list:nth-child(2) {
   background: white;
   position: relative;
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
 }
 #navigation + #main #right > #videoplayer > div > iframe {
   position: absolute;
