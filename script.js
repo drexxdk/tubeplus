@@ -1,10 +1,10 @@
-﻿function runScript() {
-    // vanilla javascript to increase speed
-    var isRoot = location.pathname == "/";
-    var isLocalhost = document.location.hostname == "localhost";
-    if (isRoot && !isLocalhost) {
-        window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
-    }
+﻿// vanilla javascript to increase speed
+var isRoot = location.pathname == "/";
+var isLocalhost = document.location.hostname == "localhost";
+if (isRoot && !isLocalhost) {
+    window.location.replace("http://www.tubeplus.ag/browse/tv-shows/Last/ALL/");
+}
+$(document).ready(function () {
     var tv_shows = $("#logo + #header").length,
 		right = $("#right"),
 		back = $("#header > #headnav > ul > li:nth-child(3) > a");
@@ -48,8 +48,16 @@
         });
         title.append(back);
         right.prepend(title);
-        right.append('<div id="videoplayer"><iframe frameborder="0" scrolling="auto"></iframe></div>');
-        var videoplayer = $("#videoplayer > iframe");
+        right.append('<div id="videoplayer"><div><iframe frameborder="0" scrolling="auto"></iframe></div></div>');
+
+        $.getScript("jquery-ui.min.js")
+            .done(function (script, textStatus) {
+                $("#videoplayer > div").resizable();
+            })
+            .fail(function (jqxhr, settings, exception) {
+                alert("error");
+            });
+        var videoplayer = $("#videoplayer > div > iframe");
         $("#seasons > a").each(function () {
             var $this = $(this),
 				text = $this.text();
@@ -75,7 +83,7 @@
             videoplayer.attr("src", url);
             $this.addClass("visited");
         });
-        var links = $("#left > #links_list:visible");
+        var links = $("#left > #links_list");
         if (links.length === 1) {
             var params = links.find(".params");
             params.children("span").remove();
@@ -94,4 +102,4 @@
         }
     }
     $("body").attr('id', "ready");
-}
+});

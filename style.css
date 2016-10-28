@@ -36,7 +36,7 @@ body:not(#ready) {
   overflow: hidden;
 }
 body:not(#ready) > * {
-  display: none!important;
+  display: none !important;
 }
 .frelease,
 #list_more,
@@ -255,11 +255,90 @@ body > .dhx_combo_list:nth-child(2) {
   display: flex;
   padding: 10px;
   position: relative;
+  background-color: red;
+  /*> div {
+                > iframe {
+                    position: absolute;
+                    width: calc(~"100% - 20px");
+                    height: calc(~"100% - 20px");
+                    background-color: green;
+                }
+            }*/
 }
-#navigation + #main #right > #videoplayer > iframe {
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-e {
+  cursor: e-resize;
+  width: 10px;
+  right: -5px;
+  top: 25px;
+  bottom: 25px;
+}
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-s {
+  cursor: s-resize;
+  height: 10px;
+  bottom: -5px;
+  left: 25px;
+  right: 25px;
+}
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-e,
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-s {
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  /*-moz-background-clip:    padding;
+	-webkit-background-clip: padding-box;
+	background-clip:         padding-box;*/
+}
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-e:hover,
+#navigation + #main #right > #videoplayer .ui-resizable > .ui-resizable-s:hover {
+  background-color: #808080;
+}
+#navigation + #main #right > #videoplayer .ui-resizable .ui-resizable-se {
+  cursor: se-resize;
   position: absolute;
-  width: calc(100% - 20px);
-  height: calc(100% - 20px);
+  right: 2px;
+  bottom: -3px;
+  width: 15px;
+  height: 15px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #202020;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+}
+#navigation + #main #right > #videoplayer .ui-resizable .ui-resizable-se:hover {
+  border-left: 10px solid #808080;
+}
+#navigation + #main #right > #videoplayer .ui-resizable .ui-resizable-handle {
+  position: absolute;
+  display: block;
+  -ms-touch-action: none;
+  touch-action: none;
+}
+#navigation + #main #right > #videoplayer > div {
+  min-width: 300px;
+  min-height: 300px;
+  max-width: 100%;
+  max-height: 100%;
+  padding: 10px;
+  background: white;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+#navigation + #main #right > #videoplayer > div > iframe {
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+  display: block;
+  overflow: auto;
+  width: calc(100% - 30px);
+  height: calc(100% - 30px);
 }
 #main {
   width: 100%;

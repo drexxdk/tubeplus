@@ -47,7 +47,7 @@ body:not(#ready) {
     overflow: hidden;
 
     > * {
-        display:none!important;
+        display: none !important;
     }
 }
 
@@ -247,11 +247,96 @@ body > .dhx_combo_list:nth-child(2) {
             position: relative;
             padding: 10px;
             position: relative;
+            background-color: red;
 
-            > iframe {
-                position: absolute;
-                width: calc(~"100% - 20px");
-                height: calc(~"100% - 20px");
+            /*> div {
+                > iframe {
+                    position: absolute;
+                    width: calc(~"100% - 20px");
+                    height: calc(~"100% - 20px");
+                    background-color: green;
+                }
+            }*/
+
+            .ui-resizable {
+                > .ui-resizable-e {
+                    // right
+                    cursor: e-resize;
+                    width: 10px;
+                    right: -5px;
+                    top: 25px;
+                    bottom:25px;
+                }
+
+                > .ui-resizable-s {
+                    // bottom
+                    cursor: s-resize;
+                    height: 10px;
+                    bottom: -5px;
+                    left: 25px;
+                    right:25px;
+                }
+
+                > .ui-resizable-e,
+                > .ui-resizable-s {
+                    .border-radius(2px);
+                }
+
+                > .ui-resizable-e:hover,
+                > .ui-resizable-s:hover {
+                    background-color:#808080;
+                }
+
+                .ui-resizable-se {
+                    // right + bottom
+                    cursor: se-resize;
+                    position: absolute;
+                    right: 2px;
+                    bottom: -3px;
+                    width: 15px;
+                    height: 15px;
+                    width: 0;
+                    height: 0;
+                    border-top: 10px solid transparent;
+                    border-bottom: 10px solid transparent;
+                    border-left: 10px solid #202020;
+                    .rotate(45deg);
+                }
+
+                .ui-resizable-se:hover {
+                    border-left: 10px solid #808080;
+                }
+
+                .ui-resizable-handle {
+                    position: absolute;
+                    display: block;
+                    -ms-touch-action: none;
+                    touch-action: none;
+                }
+            }
+            > div {
+                min-width: 300px;
+                min-height: 300px;
+                max-width: 100%;
+                max-height: 100%;
+                position: relative;
+                padding: 10px;
+                background: white;
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                > iframe {
+                    position: absolute;
+                    top: 15px;
+                    bottom: 15px;
+                    left: 15px;
+                    right: 15px;
+                    display: block;
+                    overflow: auto;
+                    width: calc(~"100% - 30px");
+                    height: calc(~"100% - 30px");
+                }
             }
         }
     }
@@ -683,11 +768,11 @@ body > .dhx_combo_list:nth-child(2) {
             }
 
             > .date-container + .date-container {
-                margin-top:10px;
+                margin-top: 10px;
             }
 
             > .date-container:last-of-type {
-                margin-bottom:25px;
+                margin-bottom: 25px;
             }
         }
 
